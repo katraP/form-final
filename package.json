@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run serve | npm run dev",
     "serve": "./node_modules/.bin/http-server -p 8080",
-    "dev": "webpack-dev-server --progress --colors --port 8090"
+    "dev": "webpack-dev-server --progress --colors --port 8080"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "babel-loader": "^5.0.0",
     "babel-plugin-dev-expression": "^0.1.0",
     "css-loader": "^0.22.0",
+    "react-addons-linked-state-mixin": "^0.14.2",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.4.2",
     "webpack": "^1.12.4",

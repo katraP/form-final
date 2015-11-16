@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.styl';
 
+var LinkedStateMixin = require('./node_modules/react-addons-linked-state-mixin'),
+		logMixin = require('./log-mixin.js');
+
 var SelectField = require('./node_modules/material-ui/lib/select-field'),
 		NameElement = require('./node_modules/material-ui/lib/text-field'),
 		EmailElement = require('./node_modules/material-ui/lib/text-field'),
@@ -20,17 +23,19 @@ var selectItems = [
 ];
 
 var FirstForm = React.createClass({
-	//_onClickMenu:function(){
-	//	this.setState({ open: true });
-	//},
+	mixins: [LinkedStateMixin, logMixin],
+	getInitialState: function(){
+		return({name: '', email: ''});
+	},
 	_onInputFocus: function(el){
 		this.refs[el].setErrorText('');
 	},
 	_onSubmitForm: function(e) {
 		var errorPosition=[];
 		e.preventDefault();
-		for(var key in this.refs){
-			if(this.refs[key].props['data-require']=='true' && this.refs[key].getValue()=='') {
+		console.log(this.state);
+		for(var key in this.state) {
+			if(this.state[key]=='') {
 				this.refs[key].setErrorText('Field can\'t be empty');
 				errorPosition.push(ReactDOM.findDOMNode(this.refs[key]).offsetTop);
 			}
@@ -44,12 +49,12 @@ var FirstForm = React.createClass({
 				<form className="form" action="" onSubmit={this._onSubmitForm}>
 					<div className="form__title">Choose an appropriate product</div>
 					<div>
-						<NameElement  hintText="Enter your name" ref="name" data-require="true"
+						<NameElement  hintText="Enter your name" ref="name" valueLink = {this.linkState('name')}
 						              onFocus={this._onInputFocus.bind(this, 'name')}/>
 					</div>
 					<div>
 						<EmailElement
-								hintText="Enter your email" ref="email"  data-require="true"
+								hintText="Enter your email" ref="email" valueLink = {this.linkState('email')}
 								onFocus={this._onInputFocus.bind(this, 'email')}/>
 					</div>
 					<div>
