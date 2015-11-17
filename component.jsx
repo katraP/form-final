@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.styl';
+import _ from 'lodash';
 
 var LinkedStateMixin = require('./node_modules/react-addons-linked-state-mixin');
 
@@ -57,7 +58,7 @@ var FirstForm = React.createClass({
 					<div className="form__title">Choose an appropriate product</div>
 					<div>
 						<NameElement  hintText="Enter your name" ref="Name" valueLink = {this.linkState('Name')}
-						              onFocus={this._onInputFocus.bind(this, 'Name')}/>
+						              onChange={this._onInputFocus.bind(this, 'Name')}/>
 					</div>
 					<div>
 						<EmailElement
@@ -93,24 +94,14 @@ var FirstForm = React.createClass({
 });
 var Sidebar = React.createClass({
 	renderList: function(){
-		var text=[];
-		for(var key in this.props.receiveData){
-			var value='';
-			if(key=='Product') {
-				for(var i=0; i< selectItems.length; i++) {
-					if(this.props.receiveData[key]==selectItems[i]['payload']) {
-						value=selectItems[i]['text'];
-						break;
-					}
+		let text = _.map(this.props.receiveData, (value, index) => {
+        	let itemValue =  ('Product' === index) ?
+					_.findWhere(selectItems, { 'payload': value}) :
+					value;
+		    itemValue = (itemValue && itemValue.text) ? itemValue.text : itemValue;
+			return (<ListItem key={index} primaryText={index} secondaryText={value} />);
+		})
 
-				}
-			}
-			else {
-				value = this.props.receiveData[key];
-			}
-			text.push(<ListItem key={key} primaryText={key}
-			                    secondaryText={value} />);
-		}
 		return text;
 	},
 	render: function(){

@@ -1,0 +1,44 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/5.0.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'serve' ]
+2 info using npm@3.3.9
+3 info using node@v5.0.0
+4 verbose run-script [ 'preserve', 'serve', 'postserve' ]
+5 info lifecycle r-form2@1.0.0~preserve: r-form2@1.0.0
+6 silly lifecycle r-form2@1.0.0~preserve: no script for preserve, continuing
+7 info lifecycle r-form2@1.0.0~serve: r-form2@1.0.0
+8 verbose lifecycle r-form2@1.0.0~serve: unsafe-perm in lifecycle true
+9 verbose lifecycle r-form2@1.0.0~serve: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/furytale/dev/form-final/node_modules/.bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/furytale/dev/form-final/node_modules/.bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+10 verbose lifecycle r-form2@1.0.0~serve: CWD: /Users/furytale/dev/form-final
+11 silly lifecycle r-form2@1.0.0~serve: Args: [ '-c', 'http-server -p 8080' ]
+12 info lifecycle r-form2@1.0.0~serve: Failed to exec serve script
+13 verbose stack Error: r-form2@1.0.0 serve: `http-server -p 8080`
+13 verbose stack spawn ENOENT
+13 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:17:16)
+13 verbose stack     at emitTwo (events.js:87:13)
+13 verbose stack     at ChildProcess.emit (events.js:172:7)
+13 verbose stack     at maybeClose (internal/child_process.js:818:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+14 verbose pkgid r-form2@1.0.0
+15 verbose cwd /Users/furytale/dev/form-final
+16 error Darwin 15.0.0
+17 error argv "/usr/local/Cellar/node/5.0.0/bin/node" "/usr/local/bin/npm" "run" "serve"
+18 error node v5.0.0
+19 error npm  v3.3.9
+20 error file sh
+21 error code ELIFECYCLE
+22 error errno ENOENT
+23 error syscall spawn
+24 error r-form2@1.0.0 serve: `http-server -p 8080`
+24 error spawn ENOENT
+25 error Failed at the r-form2@1.0.0 serve script 'http-server -p 8080'.
+25 error This is most likely a problem with the r-form2 package,
+25 error not with npm itself.
+25 error Tell the author that this fails on your system:
+25 error     http-server -p 8080
+25 error You can get their info via:
+25 error     npm owner ls r-form2
+25 error There is likely additional logging output above.
+26 verbose exit [ 1, true ]
